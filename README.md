@@ -3,7 +3,6 @@
 </p>
 <p align="center"><h1 align="center">GOLANG_INTERVIEW</h1></p>
 <p align="center">
-	<em><code>❯ REPLACE-ME</code></em>
 </p>
 <p align="center">
 	<img src="https://img.shields.io/github/license/YunfeiSHU/golang_interview?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
@@ -17,23 +16,21 @@
 	<!-- default option, no dependency badges. -->
 </p>
 
+<br>
 
 ## 📁 Project Structure
 
 ```sh
 └── golang_interview/
-    ├── Go Summary.md
-    ├── assets
-    ├── 初版
-    │   ├── GOALNG_INTERVIEW_COLLECTION.md
-    │   ├── 八股文-1.md
-    │   ├── 八股文-2.md
-    │   ├── 八股文-3.md
-    │   ├── 八股文-4.md
-    │   ├── 八股文-5.md
-    │   ├── 八股文-6.md
-    │   ├── 八股文-7.md
-    │   └── 八股文-8.md
+    ├── Git
+    │   ├── Git -Summary.md
+    │   └── assets
+    ├── Golang
+    │   ├── Go Summary.md
+    │   ├── assets
+    │   └── 初版
+    ├── LICENSE
+    ├── README.md
     └── 计算机基础 & 数据库
         ├── MySQL八股文.md
         ├── Redis八股文.md
@@ -43,4 +40,9 @@
 ```
 
 
+---
+
+## 🎗 License
+
+This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
 
