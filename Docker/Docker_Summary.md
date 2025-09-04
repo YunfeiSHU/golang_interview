@@ -128,15 +128,31 @@ COPY --from=builder /src/app /usr/local/bin/
 CMD ["app"]
 ```
 
-
-
 ##### docker init 自动得到 Dockerfile 
 
 注意： `alpine:latest` 切换为国内源
 
 ![image-20250824170847468](./assets/image-20250824170847468.png)
 
+##### `docker build`生成镜像
 
+```bash
+docker build [选项] <构建上下文路径>
+
+# 在当前目录（包含Dockerfile）构建镜像，标签为myapp:1.0
+docker build -t myapp:1.0 .
+# 指定自定义Dockerfile名称（如Dockerfile.prod）
+docker build -t myapp:prod -f Dockerfile.prod .
+# 从URL构建（如GitHub仓库）
+docker build -t myapp:latest https://github.com/example/repo.git#main
+
+# 不使用缓存重新构建
+docker build --no-cache -t myapp:1.0 .
+```
+
+- `-t` 用于指定镜像标签（格式为 `名称:标签`）
+- `.` 表示构建上下文为当前目录（Docker 会将该目录下所有文件发送到 Docker 引擎）
+- `-f` 用于指定非默认名称的 Dockerfile
 
 #### 管理镜像：
 
@@ -319,7 +335,17 @@ CMD ["app"]
 
     - **`ports`: 端口映射**
 
-    - `expose`: 暴露端口
+      - ```yaml
+        ports:
+          - "宿主机端口:容器端口"  # 明确指定映射关系   - "8080:80"  # 宿主机的8080端口映射到容器的80端口
+          - "容器端口"           # 随机映射到宿主机的某个端口
+        ```
+
+        将容器内的端口映射到宿主机的端口，实现外部（宿主机或其他机器）对容器服务的访问
+
+    - **`expose`: 暴露端口**
+
+      - 声明容器内需要暴露的端口，**告诉使用者该容器在哪个端口提供服务，不具备实际的端口映射能力**
 
     - `networks`: 网络配置
 
@@ -328,43 +354,43 @@ CMD ["app"]
   - 存储
 
     - **`volumes`: 卷挂载**
-
+  
     - `tmpfs`: 临时文件系统
-
+  
   - 环境配置
-
+  
     - `environment`: 环境变量
-
+  
     - `env_file`: 环境变量文件
-
+  
     - `working_dir`: 工作目录
     - `user`: 运行用户
-
+  
   - 命令和入口点
-
+  
     - `command`: 覆盖默认命令
-
+  
     - `entrypoint`: 入口点
-
+  
     - `stdin_open`: 保持STDIN开启
     - `tty`: 分配伪TTY
-
+  
   - 依赖关系
-
+  
     - `depends_on`: 服务依赖
-
+  
     - `links`: 服务链接（已弃用）
 
   - 资源限制
-
+  
     - `mem_limit`: 内存限制
     - `cpus`: CPU限制
-
+  
     - `deploy`: 部署配置（Swarm模式）
-
+  
   - 健康检查	
     - `healthcheck`: 健康检查配置
-
+  
   - 日志
     - `logging`: 日志配置
 
